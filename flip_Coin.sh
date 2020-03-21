@@ -1,9 +1,21 @@
  #!/bin/bash -x
 echo "welcome to flipCoin simulator game"
+declare -A  singletDictionary
+
+for (( i=0; i<9; i++ ))
+do
 toss=$((RANDOM%2))
 if [ $toss -eq 0 ]
 then
-    echo  head
+   singletDictionary[head]=$((${singletDictionary[head]}+1))
 else
-    echo tail
+   singletDictionary[tail]=$((${singletDictionary[tail]}+1)) 
 fi
+done
+    echo "${singletDictionary[@]}"
+    echo "${!singletDictionary[@]}"
+
+headper=$((${singletDictionary[head]}*100/i))
+tailper=$((${singletDictionary[tail]}*100/i))
+echo $tailper
+echo $headper
