@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 declare -A  coin
 declare -A  pertoss
 echo "welcome to flip coin games"
@@ -35,4 +35,11 @@ function per()
 
 read -p "enter the no of toss" no_of_toss
 read -p "enter the no of coins" no_of_coins
-"$( flip_coin $(($no_of_toss,$no_of_coins)) )"
+    if [ $no_of_coins -gt 0 ] && [ $no_of_coins -lt 4 ]
+    then
+        res="$( flip_coin $(($no_of_toss,$no_of_coins)) )"
+        echo $res
+        echo ${coin[@]}
+    else
+        echo "enter valid coin no"
+    fi
