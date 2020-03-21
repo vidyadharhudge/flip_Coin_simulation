@@ -3,7 +3,8 @@ declare -A  coin
 declare -A  pertoss
 echo "welcome to flip coin games"
 function flip_coin()
-{
+{ 
+  maximum=0
   for (( i=1; i<=no_of_toss; i++ ))
   do
          coinface=""
@@ -19,6 +20,11 @@ function flip_coin()
      done
         echo $coinface
         coin[$coinface]=$((${coin[$coinface]}+1))
+        if [ $maximum -lt ${coin[$coinface]} ]
+        then
+              maximum=${coin[$coinface]}
+              echo $maximum
+         fi
         per $coinface
   done
       echo "${!coin[@]}"
