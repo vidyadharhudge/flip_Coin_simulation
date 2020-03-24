@@ -2,13 +2,13 @@
 declare -A  coin
 declare -A  pertoss
 echo "welcome to flip coin games"
-function flip_coin()
+function Flip_Coin()
 { 
   maximum=0
-  for (( i=1; i<=no_of_toss; i++ ))
+  for (( i=1; i<=No_Of_Toss; i++ ))
   do
          coinface=""
-     for (( j=1; j<=no_of_coins; j++ ))
+     for (( j=1; j<=No_Of_Coins; j++ ))
      do
          toss=$((RANDOM%2))
          if [ $toss -eq 0 ]
@@ -25,25 +25,25 @@ function flip_coin()
               maximum=${coin[$coinface]}
               echo $maximum
          fi
-        per $coinface
+        Per $coinface
   done
       echo "${!coin[@]}"
       echo "${coin[@]}"
 }
 
-function per()
+function Per()
 {
-       per=$((${coin[$coinface]}*100/$no_of_toss))
-       pertoss[$coinface]=$per
+       Per=$((${coin[$coinface]}*100/$No_Of_Toss))
+       pertoss[$coinface]=$Per
        echo "key ${!pertoss[@]}"
        echo "pecent ${pertoss[@]}"
 }
 
-read -p "enter the no of toss" no_of_toss
-read -p "enter the no of coins" no_of_coins
-    if [ $no_of_coins -gt 0 ] && [ $no_of_coins -lt 4 ]
+read -p "enter the no of toss" No_Of_Toss
+read -p "enter the no of coins" No_Of_Coins
+    if [ $No_Of_Coins -gt 0 ] && [ $No_Of_Coins -lt 4 ]
     then
-        res="$( flip_coin $(($no_of_toss,$no_of_coins)) )"
+        res="$( Flip_Coin $(($No_Of_Toss,$No_Of_Coins)) )"
         echo $res
         echo ${coin[@]}
     else
